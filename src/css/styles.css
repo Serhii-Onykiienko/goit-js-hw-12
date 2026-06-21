@@ -51,7 +51,8 @@ ul {
   border-color: #4e75ff;
 }
 
-.form button {
+.form button,
+.load-more {
   min-width: 91px;
   height: 40px;
   padding: 8px 16px;
@@ -65,7 +66,9 @@ ul {
 }
 
 .form button:hover,
-.form button:focus {
+.form button:focus,
+.load-more:hover,
+.load-more:focus {
   background-color: #6c8cff;
 }
 
@@ -118,28 +121,56 @@ ul {
   line-height: 1.33;
 }
 
+/* Load more button */
+
+.load-more {
+  display: block;
+  min-width: 125px;
+  margin: 32px auto 24px;
+}
+
+.load-more.is-hidden {
+  display: none;
+}
+
 /* Loader */
 
 .loader {
   position: relative;
-  font-size: 48px;
+  display: block;
+  width: 120px;
+  height: 48px;
+  margin: 0 auto;
+  font-size: 24px;
+  line-height: 48px;
   letter-spacing: 2px;
+  color: #2e2f42;
+  text-align: center;
 }
-.loader:before {
+
+.loader::before {
   content: 'Loading';
-  color: #fff;
 }
-.loader:after {
+
+.loader::after {
   content: '';
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   background-color: #ff3d00;
   border-radius: 50%;
   position: absolute;
   inset: 0;
   margin: auto;
-  top: -70px;
+  top: -50px;
   animation: motion 3s ease-in-out infinite;
+}
+
+.loader.is-hidden {
+  display: none;
+}
+
+.is-hidden {
+  display: none;
 }
 
 @keyframes motion {
@@ -148,25 +179,13 @@ ul {
   100% {
     transform: translateX(0) scale(1);
   }
+
   25% {
-    transform: translateX(-100px) scale(0.3);
+    transform: translateX(-80px) scale(0.3);
   }
+
   75% {
-    transform: translateX(100px) scale(0.3);
-  }
-}
-
-.is-hidden {
-  display: none;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
+    transform: translateX(80px) scale(0.3);
   }
 }
 
@@ -183,6 +202,11 @@ ul {
   }
 
   .form input {
+    width: 100%;
+    max-width: 272px;
+  }
+
+  .form button {
     width: 100%;
     max-width: 272px;
   }
